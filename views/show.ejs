@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See Fruit Details</title>
+</head>
+<body>
+    <h1><%= pokemon.name %></h1>
+    <img src="<%= pokemon[i].img %>">
+    <% for (let i = 0; i < pokemon.stats.length; i++) { %>
+        <ul>
+            <li><a href="/pokemon/<%= i %>">
+                <%= pokemon[i].name %>
+                </a>
+                <img src="<%= pokemon[i].img %>">
+            </li>
+        </ul>
+    <% } %>
+    <a href="/pokemon">Back to Pokedex</a>
+</body>
+</html>
