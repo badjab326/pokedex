@@ -4,16 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drinks Index</title>
+    <title>Edit Pokemon</title>
 </head>
   <body>
     <h1>Edit Pokemon Page</h1>
     <form action="/pokemon/<%=index%>?_method=PUT" method="POST">
-            <input type="text" name="name" placeholder="name"/>
-            <input type="text" name="image" placeholder="link to image"/><br />
-            <input type="text" name="type" placeholder="type(s)"/>
-      <br />
-      <input type="submit" name="" value="Submit Changes" />
+            <input type="text" name="name" placeholder="name" value="<%= pokemon.name %>"/>
+            <input type="text" name="img" placeholder="link to image" value="<%= pokemon.img %>"/><br />
+            <input type="text" name="type" placeholder="type(s)" value="<%= pokemon.type %>" /><br />
+            <input type="text" name="hp" placeholder="hp" value="<%= pokemon.stats.hp %>" />
+            <input type="text" name="attack" placeholder="attack" value="<%= pokemon.stats.attack %>" /><br />
+            <input type="text" name="defense" placeholder="defense" value="<%= pokemon.stats.defense %>" />
+            <input type="text" name="spattack" placeholder="spattack" value="<%= pokemon.stats.spattack %>" /><br />
+            <input type="text" name="spdefense" placeholder="spdefense" value="<%= pokemon.stats.spdefense %>" />
+            <input type="text" name="speed" placeholder="speed" value="<%= pokemon.stats.speed %>" /><br />
+      <input type="submit" value="Submit Changes" />
     </form>
   </body>
 </html>

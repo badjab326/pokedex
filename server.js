@@ -5,11 +5,12 @@ const app = express();
 const port = 3000;
 
 //mount middleware
+app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 
 //Index
 app.get('/pokemon', (req, res) => {
-    res.render('index.ejs', { pokemon: pokemon})
+    res.render('index.ejs', { pokemon: pokemon })
 });
 
 //New
@@ -19,11 +20,22 @@ app.get('/pokemon/new', (req, res) => {
 
 //Create
 app.post("/pokemon", (req, res) => {
-    pokemon.push(req.body)
-    console.log(pokemon)
+    pokemon.push({
+        name: req.body.name,
+        img: req.body.img,
+        type: req.body.type,
+        stats: {
+            hp: req.body.hp,
+            attack: req.body.attack,
+            defense: req.body.defense,
+            spattack: req.body.spattack,
+            spdefense: req.body.spdefense,
+            speed: req.body.speed
+        }
+    })
+    console.log(req)
     res.redirect("/pokemon")
-  })
-
+  });
 
 //Delete
 app.delete('/pokemon/:id', (req, res) => {
@@ -35,20 +47,32 @@ app.delete('/pokemon/:id', (req, res) => {
 app.get('/pokemon/:id/edit', (req, res) => {
     res.render('edit.ejs', {
         pokemon: pokemon[req.params.id],
-        index: req.params.id,
+        index: req.params.id
     })
 });
 
 //Update
 app.put('/pokemon/:id', (req, res) => {
-    pokemon[req.params.id] = req.body
+    pokemon[req.params.id] = {
+        name: req.body.name,
+        img: req.body.img,
+        type: [req.body.type],
+        stats: {
+            hp: req.body.hp,
+            attack: req.body.attack,
+            defense: req.body.defense,
+            spattack: req.body.spattack,
+            spdefense: req.body.spdefense,
+            speed: req.body.speed
+        }},
     res.redirect('/pokemon')
 });
 
 //Show
 app.get('/pokemon/:id', (req, res) => {
     res.render('show.ejs', {
-        pokemon: pokemon[req.params.id]
+        pokemon: pokemon[req.params.id],
+        index: req.params.id
     })
 });
 
