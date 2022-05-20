@@ -17,6 +17,14 @@ app.get('/pokemon/new', (req, res) => {
     res.render('new.ejs')
 });
 
+//Create
+app.post("/pokemon", (req, res) => {
+    pokemon.push(req.body)
+    console.log(pokemon)
+    res.redirect("/pokemon")
+  })
+
+
 //Delete
 app.delete('/pokemon/:id', (req, res) => {
     pokemon.splice(req.params.id, 1)

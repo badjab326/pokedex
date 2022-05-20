@@ -4,20 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>See Fruit Details</title>
+    <title><%= pokemon.name %></title>
 </head>
 <body>
     <h1><%= pokemon.name %></h1>
-    <img src="<%= pokemon[i].img %>">
-    <% for (let i = 0; i < pokemon.stats.length; i++) { %>
+    <img src="<%= pokemon.img %>">
+    <h2>TYPE</h2>
+    <% for (let i = 0; i < pokemon.type.length; i++) { %>
         <ul>
-            <li><a href="/pokemon/<%= i %>">
-                <%= pokemon[i].name %>
-                </a>
-                <img src="<%= pokemon[i].img %>">
+            <li>
+                <%= pokemon.type[i] %>
             </li>
         </ul>
     <% } %>
+    <h2>STATS</h2>
+    <ul>
+        <li>HP: <%= pokemon.stats.hp %></li>
+        <li>ATTACK: <%= pokemon.stats.attack %></li>
+        <li>DEFENSE: <%= pokemon.stats.defense %></li>
+        <li>SP.ATTACK: <%= pokemon.stats.spattack %> </li>
+        <li>SP.DEFENSE: <%= pokemon.stats.spdefense %></li>
+        <li>SPEED: <%= pokemon.stats.speed %></li>
+    </ul>
+
+    <a href="/pokemon/:id/edit">Edit This Pokemon!</a>
     <a href="/pokemon">Back to Pokedex</a>
 </body>
 </html>
