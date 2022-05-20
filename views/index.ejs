@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
     <title>Pokedex</title>
 </head>
 <body>
-    <h1>Welcome to Pokedex!</h1>
-    <h2>Pokemon</h2>
+    <header><h1>Welcome to Pokedex!</h1></header>
+    <h2 id="main">Pokemon</h2>
+    <ul id="indexList">
     <% for (let i = 0; i < pokemon.length; i++) { %>
-        <ul>
-            <li><a href="/pokemon/<%= i %>">
-                <%= pokemon[i].name %>
-                </a>
-                <img src="<%= pokemon[i].img %>">
+            <li>
+                <a href="/pokemon/<%= i %>">
+                <img src="<%= pokemon[i].img %>" title="<%= pokemon[i].name %>"></a>
                 <form action="/pokemon/<%=i; %>?_method=DELETE" method="POST">
                     <input type="submit" value="DELETE" />
                   </form>
             </li>
-        </ul>
     <% } %>
+    </ul>
 </body>
 </html>

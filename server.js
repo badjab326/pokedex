@@ -5,6 +5,7 @@ const app = express();
 const port = 3000;
 
 //mount middleware
+app.use(express.static('style'))
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 
